@@ -25,10 +25,8 @@ def run():
             temp = get_temp()
             if temp < 20.0:
                 fan_power = 20
-            elif temp < 50:
-                fan_power = 50
             else:
-                fan_power = 100
+                fan_power = min(int(temp * 1.3), 100)
             p.ChangeDutyCycle(fan_power)
 
             time.sleep(check_temp_interval)
